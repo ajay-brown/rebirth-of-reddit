@@ -114,6 +114,9 @@ h2:hover {
   padding: 2.5rem;
   border: 10px black;
 }
+#authorDiv {
+  font-family: "Lato", sans-serif;
+}
 .footer {
   grid-area: footer;
   background-color: black;
@@ -122,4 +125,7 @@ h2:hover {
 #logo {
   z-index: 10;
   border: 5px black;
+}
+#socialFB:hover {
+  background-color: #fa5333;
 }

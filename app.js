@@ -4,10 +4,12 @@ window.onload = function() {
   oReq.send();
   oReq.addEventListener("load", originalFeed);
 };
+
 let i = 0;
 function originalFeed() {
   //loading titles of AskReddit
   let originalData = JSON.parse(this.response);
+  console.log(originalData);
   originalData.data.children.forEach(function(element, index, array) {
     //to display each post
     let newPostArea = document.createElement("div"); //area for posting
@@ -64,8 +66,10 @@ function originalFeed() {
       newPostArea.appendChild(newPostContent);
       let newPostAuthor = document.createElement("div");
       newPostAuthor.id = "authorDiv";
-      newPostAuthor.innerHTML = "by " + element.data.author;
+      newPostAuthor.innerHTML = "by " + element.data.author + " • ";
       newPostContent.appendChild(newPostAuthor);
+      let postTime = document.createElement("div");
+      postTime.id = "timeDiv";
 
       newPostContent.addEventListener("click", function() {
         let readFull = element.data.permalink;
