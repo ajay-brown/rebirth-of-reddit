@@ -11,46 +11,75 @@ function originalFeed() {
   originalData.data.children.forEach(function(element, index, array) {
     //to display each post
     let newPostArea = document.createElement("div"); //area for posting
-    feed.appendChild(newPostArea);
-    let postScore = document.createElement("div");
-    postScore.id = "scoreDiv";
-    postScore.innerHTML = element.data.score;
-    newPostArea.appendChild(postScore);
-    let newPostContent = document.createElement("div"); //adding content to area
-    newPostContent.id = "contentDiv";
-    newPostContent.innerHTML = element.data.title;
-    newPostArea.appendChild(newPostContent);
-    let newPostAuthor = document.createElement("div");
-    newPostAuthor.id = "authorDiv";
-    newPostAuthor.innerHTML = "by " + element.data.author;
-    newPostContent.appendChild(newPostAuthor);
-    let newPostPicArea = document.createElement("div");
-    newPostPicArea.id = "picAreaDiv";
-    newPostContent.appendChild(newPostPicArea);
-    let newPostPic = new Image();
-    if (element.data.thumbnail === "self") {
-      return null;
-    } else {
-      newPostPic.src = element.data.thumbnail; //140x140;
-      newPostPicArea.appendChild(newPostPic);
-    }
-    newPostContent.addEventListener("click", function() {
-      let readFull = element.data.permalink;
-      let toLink = `https://www.reddit.com${readFull}`;
-      console.log(toLink);
-      let oReq1 = new XMLHttpRequest();
-      oReq1.open("GET", toLink);
-      oReq1.send();
-      window.open(toLink);
-      console.log("clicky");
-    });
     if (i % 2 === 0) {
-      newPostContent.class = "feed1";
+      let columnSelector = document.getElementById("feedOne");
+      columnSelector.appendChild(newPostArea);
+      let newPostPicArea = document.createElement("div");
+      newPostPicArea.id = "picAreaDiv";
+      newPostArea.appendChild(newPostPicArea);
+      let newPostPic = new Image();
+      if (element.data.thumbnail === "self") {
+        return null;
+      } else {
+        newPostPic.src = element.data.thumbnail; //140x140;
+        newPostPic.id = "picture";
+        newPostPicArea.appendChild(newPostPic);
+      }
+      let newPostContent = document.createElement("div"); //adding content to area
+      newPostContent.id = "contentDiv";
+      newPostContent.innerHTML = element.data.title;
+      newPostArea.appendChild(newPostContent);
+      let newPostAuthor = document.createElement("div");
+      newPostAuthor.id = "authorDiv";
+      newPostAuthor.innerHTML = "by " + element.data.author;
+      newPostContent.appendChild(newPostAuthor);
+      newPostContent.addEventListener("click", function() {
+        let readFull = element.data.permalink;
+        let toLink = `https://www.reddit.com${readFull}`;
+        console.log(toLink);
+        let oReq1 = new XMLHttpRequest();
+        oReq1.open("GET", toLink);
+        oReq1.send();
+        window.open(toLink);
+        console.log("clicky");
+      });
+      i++;
     } else {
-      newPostContent.class = "feed2";
+      let columnSelector = document.getElementById("feedTwo");
+      columnSelector.appendChild(newPostArea);
+      let newPostPicArea = document.createElement("div");
+      newPostPicArea.id = "picAreaDiv";
+      newPostArea.appendChild(newPostPicArea);
+      let newPostPic = new Image();
+      if (element.data.thumbnail === "self") {
+        return null;
+      } else {
+        newPostPic.src = element.data.thumbnail; //140x140;
+        newPostPic.id = "picture";
+        newPostPicArea.appendChild(newPostPic);
+      }
+      let newPostContent = document.createElement("div"); //adding content to area
+      newPostContent.id = "contentDiv";
+      newPostContent.innerHTML = element.data.title;
+      newPostArea.appendChild(newPostContent);
+      let newPostAuthor = document.createElement("div");
+      newPostAuthor.id = "authorDiv";
+      newPostAuthor.innerHTML = "by " + element.data.author;
+      newPostContent.appendChild(newPostAuthor);
+
+      newPostContent.addEventListener("click", function() {
+        let readFull = element.data.permalink;
+        let toLink = `https://www.reddit.com${readFull}`;
+        console.log(toLink);
+        let oReq1 = new XMLHttpRequest();
+        oReq1.open("GET", toLink);
+        oReq1.send();
+        window.open(toLink);
+        console.log("clicky");
+      });
+      i++;
     }
-    console.log(i);
-    i++;
   });
 }
+
 //features to add: nsfw filter, search bar, random reddit, related reddits, "pin" post graphic

@@ -1,10 +1,10 @@
 html {
   background-image: url("assets/bg.jpg");
-  position: relative;
+  position: absolute;
   z-index: -100;
   background-size: cover;
 }
-@media (min-width: 500px) {
+@media (max-width: 500px) {
   .wrapper {
     grid-gap: 5px;
     grid-template-columns: 1fr;
@@ -12,12 +12,13 @@ html {
     grid-template-areas:
       "header"
       "nav"
-      "feed"
+      "feedOne"
+      "feedTwo"
       ".";
   }
 }
 
-@media (min-width: 700px) {
+@media (max-width: 700px) {
   .wrapper {
     grid-gap: 10px;
     grid-template-columns: 1fr 1fr;
@@ -25,7 +26,7 @@ html {
     grid-template-areas:
       "header header"
       "nav nav"
-      "feed feed"
+      "feedOne feedTwo"
       ". .";
   }
 }
@@ -37,32 +38,82 @@ html {
   grid-template-areas:
     "header header"
     "nav nav"
-    "feed1 feed2"
+    "feedOne feedTwo"
     "footer footer";
 }
 .header {
   grid-area: header;
+  background-image: url("/assets/header_bg.svg");
+  background-repeat: no-repeat;
+  position: relative;
   z-index: 10;
   background-color: white;
 }
-
+#whiteBar {
+  background-color: white;
+  position: relative;
+  z-index: -10;
+}
+#logo {
+  position: relative;
+  z-index: 3;
+  margin-left: 50.5rem;
+}
 .nav {
   grid-area: nav;
   background-color: black;
+  height: 2.5rem;
 }
 
-.feed1 {
-  grid-area: feed1;
-  grid-gap: 20px;
-  background-color: white;
+h2 {
+  font-family: "Oswald", sans-serif;
+  display: inline-block;
+  position: relative;
+  z-index: 5;
+  color: grey;
+  margin: auto;
 }
-.feed2 {
-  grid-area: feed2;
+
+h2:hover {
+  color: orange;
+}
+.feedOne {
+  margin-top: 1rem;
+  margin-left: 38.5rem;
+  margin-right: 1rem;
+  grid-area: feedOne;
+  grid-gap: 20px;
+}
+
+.feedOne > div {
+  background-color: white;
+  max-width: 15rem;
+  margin: 1rem;
+}
+.feedTwo {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 38.5rem;
+  grid-area: feedTwo;
+  grid-gap: 20rem;
+}
+
+.feedTwo > div {
+  background-color: white;
+  max-width: 15rem;
+  margin: 1rem;
 }
 #contentDiv {
   font-family: "Oswald", sans-serif;
+  margin: 10px;
+  max-width: auto;
 }
 
+#picture {
+  margin: 0 auto;
+  padding: 2.5rem;
+  border: 10px black;
+}
 .footer {
   grid-area: footer;
   background-color: black;

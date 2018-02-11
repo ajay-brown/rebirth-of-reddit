@@ -7,20 +7,35 @@
     <title>Ask the Internet</title>
     <link href="style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 
 <body>
     <div class="wrapper">
+
         <div class="header">
-            <img src="/assets/header_bg.svg" alt="header" id="header-img" style="display:block; margin: 0 auto; padding-top: 30px;">
-            <img src=" /assets/logo.svg " alt="Fastenate-Logo " id="logo" style="display:block; margin: 0 auto; z-index: 1;">
+            <div id="whiteBar">
+                <img src=" /assets/logo.svg " alt="Fastenate-Logo " id="logo">
+            </div>
         </div>
-        <div class="nav"></div>
-        <div class="feed" id="feed"></div>
+        <div class="nav">
+            <h2>RANDOM</h2>
+            <h2> • </h2>
+            <h2>MY BOARDS</h2>
+            <h2> • </h2>
+            <h2>GET THE APP</h2>
+        </div>
+
+        <div class="feedOne" id="feedOne"></div>
+        <div class="feedTwo" id="feedTwo"></div>
+
+
         <div class="footer">
-            <img src="/assets/facebook_grey.svg" alt=< /div>
-        </div>
-        <script src="app.js "></script>
+            <img src="/assets/facebook_grey.svg" id="socialFB" style="display:inline-block; margin-top: .25rem; margin-left: 53rem;">
+            <img src="/assets/instagram_grey.svg" id="socialIG" style="display:inline-block;" onmouseover="this.src='assets/instagram_orange.svg';"
+                onmouseout="this.src='/assets/instagram_grey.svg';"> </div>
+    </div>
+    <script src="app.js "></script>
 </body>
 
 </html>
