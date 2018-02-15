@@ -10,6 +10,7 @@ function feed() {
   //loading titles of AskReddit
   let originalData = JSON.parse(this.response);
   console.log(originalData);
+  document.title = originalData.data.children[0].data.subreddit_name_prefixed; //subreddit title
   originalData.data.children.forEach(function(element, index, array) {
     //to display each post
     let newPostArea = document.createElement("div"); //area for posting
