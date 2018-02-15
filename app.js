@@ -2,11 +2,11 @@ window.onload = function() {
   const oReq = new XMLHttpRequest();
   oReq.open("GET", "https://www.reddit.com/r/aww/.json"); //loading default page
   oReq.send();
-  oReq.addEventListener("load", originalFeed);
+  oReq.addEventListener("load", feed);
 };
 
 let i = 0;
-function originalFeed() {
+function feed() {
   //loading titles of AskReddit
   let originalData = JSON.parse(this.response);
   console.log(originalData);
@@ -29,23 +29,29 @@ function originalFeed() {
       }
       let newPostContent = document.createElement("div"); //adding content to area
       newPostContent.id = "contentDiv";
-      newPostContent.innerHTML = element.data.title;
+      let string = element.data.title;
+      let newTitle = getTitleLength(string);
+      newPostContent.innerHTML = newTitle + " • ";
       newPostArea.appendChild(newPostContent);
       let newPostAuthor = document.createElement("div");
       newPostAuthor.id = "authorDiv";
-      newPostAuthor.innerHTML = "by " + element.data.author;
+      newPostAuthor.innerHTML = "by " + element.data.author + " • ";
       newPostContent.appendChild(newPostAuthor);
+      let newPostTime = document.createElement("div");
+      newPostTime.id = "timeDiv";
+      let thisPostTime = element.data.created_utc;
+      let timeFrom = calculateTimeSincePosted(thisPostTime);
+      newPostTime.innerHTML = timeFrom;
+      newPostContent.appendChild(newPostTime);
       newPostContent.addEventListener("click", function() {
         let readFull = element.data.permalink;
         let toLink = `https://www.reddit.com${readFull}`;
-        console.log(toLink);
         let oReq1 = new XMLHttpRequest();
         oReq1.open("GET", toLink);
         oReq1.send();
         window.open(toLink);
-        console.log("clicky");
       });
-      i++;
+      i++; //ALTERNATING SIDES
     } else {
       let columnSelector = document.getElementById("feedTwo");
       columnSelector.appendChild(newPostArea);
@@ -62,28 +68,74 @@ function originalFeed() {
       }
       let newPostContent = document.createElement("div"); //adding content to area
       newPostContent.id = "contentDiv";
-      newPostContent.innerHTML = element.data.title;
+      let string = element.data.title;
+      let newTitle = getTitleLength(string);
+      newPostContent.innerHTML = newTitle + " • ";
       newPostArea.appendChild(newPostContent);
       let newPostAuthor = document.createElement("div");
       newPostAuthor.id = "authorDiv";
       newPostAuthor.innerHTML = "by " + element.data.author + " • ";
       newPostContent.appendChild(newPostAuthor);
-      let postTime = document.createElement("div");
-      postTime.id = "timeDiv";
-
+      let newPostTime = document.createElement("div");
+      newPostTime.id = "timeDiv";
+      let thisPostTime = element.data.created_utc;
+      let timeFrom = calculateTimeSincePosted(thisPostTime);
+      newPostTime.innerHTML = timeFrom;
+      newPostContent.appendChild(newPostTime);
       newPostContent.addEventListener("click", function() {
         let readFull = element.data.permalink;
         let toLink = `https://www.reddit.com${readFull}`;
-        console.log(toLink);
         let oReq1 = new XMLHttpRequest();
         oReq1.open("GET", toLink);
         oReq1.send();
         window.open(toLink);
-        console.log("clicky");
       });
-      i++;
+      i++; //alternating sides
     }
   });
 }
+//Check title length
+function getTitleLength(string) {
+  if (string.length >= 60) {
+    return string.slice(0, 60) + "...";
+  } else {
+    return string;
+  }
+}
+//to calc date, from Jocelyn
+function calculateTimeSincePosted(sec) {
+  const date = new Date(sec * 1000);
+  const today = new Date();
+  const ms = today - date;
+  let s = Math.floor(ms / 1000);
+  let m = Math.floor(s / 60);
+  s = s % 60;
+  let h = Math.floor(m / 60);
+  m = m % 60;
+  const d = Math.floor(h / 24);
+  h = h % 24;
+  if (d === 0) {
+    return h + "H " + m + "M ago";
+  } else if (h === 0) {
+    return m + " M ago";
+  } else {
+    return d + "D " + h + "H " + m + "M ago";
+  }
+}
 
+randomBtn.addEventListener("click", function() {
+  let clearFeedOne = document.getElementById("feedOne");
+  clearFeedOne.textContent = "";
+
+  let clearFeedTwo = document.getElementById("feedTwo");
+  clearFeedTwo.textContent = "";
+
+  const randomReq = new XMLHttpRequest();
+  randomReq.open(
+    "GET",
+    "https://crossorigin.me/https://www.reddit.com/r/random/.json"
+  );
+  randomReq.send();
+  randomReq.addEventListener("load", feed);
+});
 //features to add: nsfw filter, search bar, random reddit, related reddits, "pin" post graphic
