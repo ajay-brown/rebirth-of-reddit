@@ -1,0 +1,334 @@
+@media only screen and (max-width: 500px) {
+  .wrapper {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "header"
+      "nav"
+      "feedOne"
+      "feedTwo"
+      ".";
+  }
+  .header {
+    grid-area: header;
+    background-image: url("/assets/header_bg.svg");
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 10;
+    background-color: white;
+  }
+  #whiteBar {
+    background-color: white;
+    position: relative;
+    z-index: -10;
+    width: auto;
+  }
+  #logo {
+    position: relative;
+    z-index: 3;
+    margin-left: 50.5rem;
+  }
+  .nav {
+    grid-area: nav;
+    background-color: black;
+    height: 2.5rem;
+    margin: auto;
+    width: 100%;
+  }
+
+  h2 {
+    font-family: "Oswald", sans-serif;
+    display: inline-block;
+    position: relative;
+    z-index: 5;
+    color: grey;
+    margin: auto;
+    padding: auto;
+  }
+
+  h2:hover {
+    color: orange;
+  }
+  .feedOne {
+    margin: auto;
+    grid-area: feedOne;
+    grid-gap: 20px;
+  }
+
+  .feedOne > div {
+    background-color: white;
+    max-width: 15rem;
+    margin: 1rem;
+  }
+  .feedTwo {
+    margin: auto;
+    grid-area: feedTwo;
+    grid-gap: 20rem;
+  }
+
+  .feedTwo > div {
+    background-color: white;
+    max-width: 15rem;
+    margin: 1rem;
+  }
+  #contentDiv {
+    font-family: "Oswald", sans-serif;
+    margin: 10px;
+    max-width: auto;
+  }
+
+  #picture {
+    margin: 0 auto;
+    padding: 2.5rem;
+    border: 10px black;
+  }
+  #authorDiv {
+    font-family: "Lato", sans-serif;
+    display: inline-block;
+  }
+
+  #timeDiv {
+    font-family: "Lato", sans-serif;
+    display: inline-block;
+  }
+  .footer {
+    grid-area: footer;
+    background-color: black;
+  }
+
+  #logo {
+    z-index: 10;
+    border: 5px black;
+  }
+  #socialFB:hover {
+    background-color: #fa5333;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50% auto;
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "feedOne feedTwo"
+      ". .";
+  }
+  .header {
+    grid-area: header;
+    background-image: url("/assets/header_bg.svg");
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 10;
+    background-color: white;
+  }
+  #whiteBar {
+    background-color: white;
+    position: relative;
+    z-index: -10;
+    width: 100%;
+  }
+  #logo {
+    position: relative;
+    z-index: 3;
+    margin-left: 50.5rem;
+  }
+  .nav {
+    grid-area: nav;
+    background-color: black;
+    height: 2.5rem;
+    margin: auto;
+    width: 100%;
+  }
+
+  h2 {
+    font-family: "Oswald", sans-serif;
+    display: inline-block;
+    position: relative;
+    z-index: 5;
+    color: grey;
+    margin: auto;
+    padding: auto;
+  }
+
+  h2:hover {
+    color: orange;
+  }
+  .feedOne {
+    margin-top: 1 vmin;
+    margin-left: 38.5rem;
+    margin-right: 1rem;
+    grid-area: feedOne;
+    grid-gap: 20px;
+  }
+
+  .feedOne > div {
+    background-color: white;
+    max-width: 15rem;
+    margin: 1rem;
+  }
+  .feedTwo {
+    margin-top: 1 vmin;
+    margin-left: 1rem;
+    margin-right: 38.5rem;
+    grid-area: feedTwo;
+    grid-gap: 20rem;
+  }
+
+  .feedTwo > div {
+    background-color: white;
+    max-width: 15rem;
+    margin: 1rem;
+  }
+  #contentDiv {
+    font-family: "Oswald", sans-serif;
+    margin: 10px;
+    max-width: auto;
+  }
+
+  #picture {
+    margin: 0 auto;
+    padding: 2.5rem;
+    border: 10px black;
+  }
+  #authorDiv {
+    font-family: "Lato", sans-serif;
+    display: inline-block;
+  }
+
+  #timeDiv {
+    font-family: "Lato", sans-serif;
+    display: inline-block;
+  }
+  .footer {
+    grid-area: footer;
+    background-color: black;
+  }
+
+  #logo {
+    z-index: 10;
+    border: 5px black;
+  }
+  #socialFB:hover {
+    background-color: #fa5333;
+  }
+}
+html {
+  background-image: url("assets/bg.jpg");
+  z-index: -100;
+  background-size: cover;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50% auto;
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "feedOne feedTwo"
+    "footer footer";
+}
+.header {
+  grid-area: header;
+  background-image: url("/assets/header_bg.svg");
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 10;
+  background-color: white;
+}
+#whiteBar {
+  background-color: white;
+  position: relative;
+  z-index: -10;
+  width: 100%;
+}
+#logo {
+  position: relative;
+  z-index: 3;
+  margin-left: 50.5rem;
+}
+.nav {
+  grid-area: nav;
+  display: flex;
+  background-color: black;
+  height: 2.5rem;
+  margin: auto;
+  width: 100%;
+}
+
+h2 {
+  font-family: "Oswald", sans-serif;
+  display: inline-block;
+  position: relative;
+  z-index: 5;
+  color: grey;
+  margin: auto;
+  padding: auto;
+}
+
+h2:hover {
+  color: orange;
+}
+.feedOne {
+  margin-left: auto;
+  margin-right: auto;
+  grid-area: feedOne;
+  grid-gap: 20px;
+}
+
+.feedOne > div {
+  background-color: white;
+  max-width: 15rem;
+  margin: 1rem;
+}
+.feedTwo {
+  margin-right: auto;
+  margin-left: auto;
+  grid-area: feedTwo;
+  grid-gap: 20rem;
+}
+
+.feedTwo > div {
+  background-color: white;
+  max-width: 15rem;
+  margin: 1rem;
+}
+#contentDiv {
+  font-family: "Oswald", sans-serif;
+  margin: 10px;
+  max-width: auto;
+}
+
+#picture {
+  margin: 0 auto;
+  padding: 2.5rem;
+  border: 10px black;
+}
+#authorDiv {
+  font-family: "Lato", sans-serif;
+  display: inline-block;
+}
+
+#timeDiv {
+  font-family: "Lato", sans-serif;
+  display: inline-block;
+}
+.footer {
+  grid-area: footer;
+  background-color: black;
+}
+
+#logo {
+  z-index: 10;
+  display: flex;
+  margin: auto;
+  border: 5px black;
+}
+#socialFB:hover {
+  background-color: #fa5333;
+}
